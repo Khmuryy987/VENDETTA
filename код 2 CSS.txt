@@ -1,0 +1,27 @@
+body {
+    background: #1a1a1a;
+    color: white;
+    font-family: sans-serif;
+    margin: 0;
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-148337517319d-783f9ee07511?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-attachment: fixed;
+}
+header {
+    display: flex; justify-content: space-between; padding: 20px;
+    background: rgba(0,0,0,0.8); border-bottom: 2px solid #d35400;
+}
+.glass-card {
+    background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
+    padding: 20px; border-radius: 15px; margin: 20px; border: 1px solid rgba(255,255,255,0.1);
+}
+table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+th { background: #3e1a0f; padding: 10px; text-align: left; }
+td { padding: 10px; border-bottom: 1px solid #333; }
+.hidden { display: none; }
+.snowflake { position: fixed; top: -10px; background: white; border-radius: 50%; pointer-events: none; animation: fall linear infinite; }
+@keyframes fall { to { transform: translateY(105vh); } }
+.glow-btn { background: #d35400; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; }
+input { width: 100%; padding: 10px; margin: 10px 0; background: #222; border: 1px solid #444; color: white; }
+.badge { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+.leader { background: #ffd700; color: black; }

@@ -1,0 +1,53 @@
+let members = JSON.parse(localStorage.getItem('v_members')) || [
+    { id: 69965, name: "Ярослав Кайрон", role: "ЛІДЕР", map: 126010, discord: "oracar" },
+    { id: 101435, name: "Конор Кайрон", role: "ЛІДЕР", map: 160672, discord: "not_found" }
+];
+
+function render() {
+    const root = document.getElementById('members-table-body');
+    if (!root) return;
+    root.innerHTML = members.map(m => `
+        <tr>
+            <td style="color:#e67e22; font-weight:bold">${m.name}</td>
+            <td><span class="badge ${m.role === 'ЛІДЕР' ? 'leader' : ''}">${m.role}</span></td>
+            <td>${m.id}</td>
+            <td>${m.map}</td>
+            <td>${m.discord}</td>
+        </tr>
+    `).join('');
+}
+
+function showSection(id) {
+    document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+    document.getElementById(id).classList.remove('hidden');
+}
+
+document.getElementById('reg-form').onsubmit = (e) => {
+    e.preventDefault();
+    const newMember = {
+        id: Math.floor(Math.random() * 90000) + 10000,
+        name: e.target[0].value,
+        role: "НОВАЧОК",
+        discord: e.target[2].value,
+        map: e.target[3].value
+    };
+    members.push(newMember);
+    localStorage.setItem('v_members', JSON.stringify(members));
+    alert('Заявку прийнято локально!');
+    render();
+    showSection('members');
+};
+
+function createSnow() {
+    for(let i=0; i<30; i++) {
+        let s = document.createElement('div');
+        s.className = 'snowflake';
+        s.style.left = Math.random()*100+'vw';
+        s.style.width = s.style.height = Math.random()*5+2+'px';
+        s.style.animationDuration = Math.random()*3+2+'s';
+        document.getElementById('snow-container').appendChild(s);
+    }
+}
+
+render();
+createSnow();

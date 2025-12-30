@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VENDETTA CLAN | New Year Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    
+    <div id="snow-container"></div>
+
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-mask"></i> VENDETTA <span class="santa-hat">🎅</span>
+        </div>
+        <nav>
+            <button onclick="showSection('members')" class="active-nav"><i class="fa-solid fa-users"></i> Учасники</button>
+            <button onclick="showSection('salary')"><i class="fa-solid fa-coins"></i> Зарплата</button>
+            <button onclick="showSection('admin')" id="admin-btn"><i class="fa-solid fa-shield-halved"></i> Адмінка</button>
+        </nav>
+        <div class="user-profile" onclick="openProfile()">
+            <img src="https://i.pravatar.cc/150?img=11" alt="Avatar" id="current-user-avatar">
+            <div class="user-info">
+                <span id="current-user-name">Guest</span>
+                <small id="current-user-role">Гість</small>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <section id="login-section" class="hidden">
+            <div class="glass-card form-container">
+                <h2>🎅 Заявка в VENDETTA</h2>
+                <form id="reg-form">
+                    <input type="text" placeholder="Ім'я та Прізвище (IC)" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="text" placeholder="Хто запросив (Нік)" required>
+                    <input type="number" placeholder="Номер карти (6 цифр)" required>
+                    <button type="submit" class="glow-btn">Надіслати заявку</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="members">
+            <div class="glass-card">
+                <div class="search-bar">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Пошук за ніком, ID або Discord..." onkeyup="filterTable()">
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Фото</th>
+                                <th>Нік</th>
+                                <th>Роль</th>
+                                <th>ID</th>
+                                <th>Карта</th>
+                                <th>Discord</th>
+                                <th>Пошта</th>
+                            </tr>
+                        </thead>
+                        <tbody id="members-table-body">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="salary" class="hidden">
+            <div class="glass-card">
+                <h2>💰 Система Зарплати та Балів</h2>
+                <div class="salary-controls">
+                    <button class="action-btn" onclick="alert('Функціонал видачі балів')"><i class="fa-solid fa-plus"></i> Видати бали</button>
+                    <button class="action-btn secondary"><i class="fa-solid fa-clock-rotate-left"></i> Історія</button>
+                </div>
+                <div class="salary-list" id="salary-list">
+                    <div class="salary-item">
+                        <span><i class="fa-solid fa-check-circle"></i> Участь у ГРП</span>
+                        <span class="points">+50 балів</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="admin" class="hidden">
+            <div class="glass-card">
+                <h2>🛡 Панель Лідера</h2>
+                <div class="admin-grid">
+                    <div class="stat-card">
+                        <h3>Заявки</h3>
+                        <p class="big-num">3</p>
+                        <button class="small-btn">Переглянути</button>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Бюджет</h3>
+                        <p class="big-num">$1.2M</p>
+                        <button class="small-btn">Керувати</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="profile-modal" class="modal hidden">
+        <div class="modal-content glass-card">
+            <span class="close" onclick="closeProfile()">&times;</span>
+            <div class="profile-header">
+                <img src="https://i.pravatar.cc/150?img=11" alt="Profile">
+                <h2>Yaroslav Vendetta</h2>
+                <span class="badge leader">ЛІДЕР</span>
+            </div>
+            <div class="profile-stats">
+                <p><strong>Час у клані:</strong> 34 дні</p>
+                <p><strong>Бали:</strong> 1250</p>
+                <p><strong>ID Discord:</strong> 9384729102</p>
+            </div>
+            <button class="glow-btn full-width">Редагувати профіль</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
